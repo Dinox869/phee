@@ -16,7 +16,7 @@ class Drn extends State<drn>
 
   Widget choice()
   {
-    if (num == 1)
+    if (widget.num == 1)
     {
       //food
       return new StreamBuilder<QuerySnapshot>(
@@ -129,7 +129,7 @@ class Drn extends State<drn>
           }
       );
     }
-    else if(num == 2)
+    else if(widget.num == 2)
     {
       return new StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection("Freg leaves hotel").snapshots(),
@@ -326,7 +326,7 @@ class Drn extends State<drn>
               new Hero(
                 tag: document.data['url'],
                 child: new FadeInImage(
-                  placeholder: new AssetImage("albums/bird.jpg"),
+                  placeholder: new AssetImage("album/hotel.png"),
                   image: new NetworkImage(document.data['url']),
                   fit: BoxFit.fill,
                   height: screenHeight(context,dividedBy: 3.5),
@@ -382,7 +382,17 @@ class Drn extends State<drn>
 
   @override
   Widget build(BuildContext context) {
-    return choice();
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            choice()
+          ],
+        ),
+      ),
+    );
   }
 
 }

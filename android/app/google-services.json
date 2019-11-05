@@ -1,0 +1,243 @@
+{
+  "project_info": {
+    "project_number": "809594755534",
+    "firebase_url": "https://arma-17c62.firebaseio.com",
+    "project_id": "arma-17c62",
+    "storage_bucket": "arma-17c62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:86e401c3353894a9e9f39f",
+        "android_client_info": {
+          "package_name": "admin.second.gates.recon.admin_h"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:0d9e3ee6a746f55be9f39f",
+        "android_client_info": {
+          "package_name": "admin.second.gates.recon.admin_hotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:4dc0188c606f99d7e9f39f",
+        "android_client_info": {
+          "package_name": "admin.second.gates.recon.freek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:5d6221caad31007be9f39f",
+        "android_client_info": {
+          "package_name": "admin.second.gates.recon.phee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:ed255e916f3f72e5",
+        "android_client_info": {
+          "package_name": "second.arma.recon.armas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:0b85e945e68f3b2e",
+        "android_client_info": {
+          "package_name": "second.gates.recon.freeman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:7014978d53f23d18",
+        "android_client_info": {
+          "package_name": "second.gates.recon.manfree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809594755534:android:d18a269d47d8cf61",
+        "android_client_info": {
+          "package_name": "second.gates.recon.project2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd8QwFP_KjGL1H_U0jkHUyJN6GfqL8AD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809594755534-knsq6a6c03c9dahitbbvh0932sv9ltmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

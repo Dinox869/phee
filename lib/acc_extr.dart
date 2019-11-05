@@ -11,49 +11,63 @@ class Acc extends State<acc>
 {
   @override
   Widget build(BuildContext context) {
-    return new StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection("Freg leaves hotel").snapshots(),
-        builder : (BuildContext context,
-            AsyncSnapshot<QuerySnapshot> snapshot)
-        {
-          if(snapshot.hasError)
-            return new Text('${snapshot.error}');
-          switch(snapshot.connectionState)
-          {
-            case ConnectionState.waiting:
-            //change to a hovering page waiting for the actual data...
-              return  Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    height:screenHeight(context,dividedBy: 1),
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  )
-                ],
-              );
-            default:
-              return  SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      ListView(
-                        padding: EdgeInsets.only(left: 15, right: 15),
-                        primary: false,
-                        shrinkWrap: true,
-                        children: buildList(snapshot.data.documents, context,8),
-                      )
-                    ]
-                ),
-              );
-          }
-        }
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            choice()
+          ],
+        ),
+      ),
     );
+
   }
 }
-
+Widget choice()
+{
+  return new StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection("Freg leaves hotel").snapshots(),
+      builder : (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot)
+      {
+        if(snapshot.hasError)
+          return new Text('${snapshot.error}');
+        switch(snapshot.connectionState)
+        {
+          case ConnectionState.waiting:
+          //change to a hovering page waiting for the actual data...
+            return  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  height:screenHeight(context,dividedBy: 1),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              ],
+            );
+          default:
+            return  SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    ListView(
+                      padding: EdgeInsets.only(left: 15, right: 15),
+                      primary: false,
+                      shrinkWrap: true,
+                      children: buildList(snapshot.data.documents, context,8),
+                    )
+                  ]
+              ),
+            );
+        }
+      }
+  );
+}
 // Listview generation...
 List<Widget> buildList(List<DocumentSnapshot> documents, BuildContext context, int num) {
   List<Widget> _list = [];

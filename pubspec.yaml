@@ -26,7 +26,7 @@ dependencies:
   cloud_firestore:
   flutter_staggered_grid_view:
   file_picker:
-  image_picker:
+
 
 
 dev_dependencies:

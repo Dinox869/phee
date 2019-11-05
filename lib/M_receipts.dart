@@ -1,388 +1,373 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:phee/screenreducer.dart';
-class drn extends StatefulWidget
-{
-  final num;
-  drn({Key key,
-    this.num
-  }): super (key:key);
 
+class m_receipts extends StatefulWidget
+{
   @override
-  Drn createState()=> Drn();
+  M_receipts createState()=> M_receipts();
 }
-class Drn extends State<drn>
+
+class M_receipts extends State<m_receipts>
 {
 
-  Widget choice()
-  {
-    if (num == 1)
-    {
-      //food
-      return new StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance.collection("Freg leaves hotel").snapshots(),
-          builder : (BuildContext context,
-              AsyncSnapshot<QuerySnapshot> snapshot)
+  TextEditingController search;
+  Widget _Stream(){
+    return new StreamBuilder<QuerySnapshot>(
+        stream:
+        Firestore.instance.collection("receipts_for_Mpesa").where('Hotelname', isEqualTo: 'Freg Hotel' ).snapshots(),
+        builder: (BuildContext context,
+            AsyncSnapshot<QuerySnapshot>snapshot) {
+          if (snapshot.hasError)
           {
-            if(snapshot.hasError)
-              return new Text('${snapshot.error}');
-            switch(snapshot.connectionState)
-            {
-              case ConnectionState.waiting:
-              //change to a hovering page waiting for the actual data...
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height:screenHeight(context,dividedBy: 1),
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
-                  ],
-                );
-              default:
-                return  SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Padding(
-                          padding: EdgeInsets.only(top:35),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("BREAKFAST",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,0),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("LUNCH",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,1),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("Dinner",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,2),
-                      ),
-                      SizedBox(height: 15)
-                    ],
-                  ),
-                );
-            }
+            return Center(
+                child:Text("Error occured..")
+            );
           }
-      );
-    }
-    else if(num == 2)
-    {
-      return new StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance.collection("Freg leaves hotel").snapshots(),
-          builder : (BuildContext context,
-              AsyncSnapshot<QuerySnapshot> snapshot)
-          {
-            if(snapshot.hasError)
-              return new Text('${snapshot.error}');
-            switch(snapshot.connectionState)
-            {
-              case ConnectionState.waiting:
-              //change to a hovering page waiting for the actual data...
-                return  Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height:screenHeight(context,dividedBy: 1),
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
-                  ],
-                );
-              default:
-                return  SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("TEA",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,3),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("SOFT DRINK",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,7),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("BEER",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,5),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("WINE",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,4),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top:15),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("WHISKEY",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 26,
-                                    fontFamily: 'SpecialElite-Regular.ttf',
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-
-                          )
-                      ),
-                      GridView.count(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 0.0,
-                        crossAxisSpacing: 0.0,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: buildGrid(snapshot.data.documents,context,6),
-                      ),
-                      SizedBox(height: 15)
-                    ],
-                  ),
-                );
-            }
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height:screenHeight(context,dividedBy: 1),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                ],
+              );
+            default:
+              return ListView(
+                padding: EdgeInsets.only(left: 15, right: 15),
+                primary: false,
+                shrinkWrap: true,
+                children: buildList(snapshot.data.documents, context),
+              );
           }
-      );
-    }
+        }
+    );
   }
 
-
-  //Grid view ...
-  List<Widget> buildGrid(List<DocumentSnapshot> documents,BuildContext context,int num)
-  {
-    List<Widget> _gridview = [];
-
-    for(DocumentSnapshot document in documents){
-      if (document.data['ID'] == num){
-        _gridview.add(buildGridItem(document,context,num));
-      }
-
+  List<Widget> buildList(List<DocumentSnapshot> documents, BuildContext context) {
+    List<Widget> _list = [];
+    for(DocumentSnapshot document in documents)
+    {
+      _list.add(buildListitems(document,context));
     }
-    return _gridview;
+    return _list;
   }
-  //oN TAP FOR GRIDVIEW is here.
-  Widget buildGridItem(DocumentSnapshot document,BuildContext context, int num)
-  {
-
-    return new GestureDetector(
-        child: new Card(
-          semanticContainer: true,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          elevation: 2.0,
-          margin: const EdgeInsets.only(left: 2, right: 2, bottom: 2,top: 2),
-          child: new Stack(
-            children: <Widget>[
-              new Hero(
-                tag: document.data['url'],
-                child: new FadeInImage(
-                  placeholder: new AssetImage("albums/bird.jpg"),
-                  image: new NetworkImage(document.data['url']),
-                  fit: BoxFit.fill,
-                  height: screenHeight(context,dividedBy: 3.5),
-                ),
+  String n;
+  Widget buildListitems(DocumentSnapshot document, BuildContext context) {
+    return GestureDetector
+      (
+      child: Card(
+        semanticContainer: true,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+        margin: EdgeInsets.only(top: 05, bottom: 10),
+        child: Column(
+          children: <Widget>[
+            Text("Freg Hotel",
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold
               ),
-              new Align(
-                child: new Container(
-                  padding: const EdgeInsets.all(3.0),
-                  child: new Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      new Text(
-                          document.data['name'],
-                          //  "Bird meat",
-                          style:new TextStyle(color: Colors.white)
-                      ),
-                      new Text("\$" +'${
-                          document.data['price']
-                      // "200"
-                      }',
-                          style: new TextStyle(
-                              color: Colors.green,
+            ),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Transaction.",
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 11
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(document.data['transaction'],
+                          style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 16.0
-                          )
-                      ),
-                    ],
-                  ),
-                  color: Colors.black.withOpacity(0.7),
-                  width: double.infinity,
+                              fontSize: 13
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
-                alignment: Alignment.bottomCenter,
-              )
-            ],
+                Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Receipt number.",
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 11
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(document.data['Serial no.'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Row(
+                        children: <Widget>
+                        [
+                          Text("Amount",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 11
+                            ),
+                          )
+                        ]
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(document.data['Amount'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                              color: Colors.green
+                          ),)
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            Divider(),
+            ListView(
+              padding: EdgeInsets.only(left: 15, right: 15),
+              primary: false,
+              shrinkWrap: true,
+              children: buildLists(document, context,8),
+            ),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text("Date:"
+                          ,style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 11
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        //find the exact number...
+                        finder(document.data['time'])
+                      ],
+                    )
+                  ],
+                ),
+                Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text("Time:"
+                            ,style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 11
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text("Am 2:30"
+                            ,style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13
+                            ),
+                          )
+                        ],
+                      )
+                    ]
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  finder( int timez){
+//    if( timez.toString().substring(4,5) == '09')
+    {
+      return Text("SEP "+timez.toString() ,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    }
+    //else
+        {
+      return Text("OCT 07",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      );
+
+    }
+  }
+
+//Item list generation...
+  List<Widget> buildLists(DocumentSnapshot document, BuildContext context, int num) {
+    List<Widget> _list = [];
+    _list.clear();
+    List<String> price = List.from(document['price']);
+    List<String> Qty = List.from(document['Qty']);
+    List<String> Item = List.from(document['Item']);
+
+    for(String Price in price)
+    {
+      for(String qty in Qty)
+      {
+        for(String document in Item)
+        {
+          if (_list.length <= Item.length - 1)
+          {
+            _list.add(buildItem(document,qty,Price,context,num));
+          }
+          else
+          {
+            print("Error occurring in silence");
+          }
+        }
+      }
+    }
+    return _list;
+  }
+//Item generation..
+  Widget buildItem(String Item,String Qty,String Price,BuildContext context,int num)
+  {
+    return ListTile(
+        leading: Text(Item,
+          style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.bold
           ),
         ),
-        onTap: (){}
-//        {
-//          Navigator.push(context,new MaterialPageRoute(builder: (context)=>
-//              product(
-//                  url: document.data['url'],
-//                  details: document.data['detail'],
-//                  name: document.data['name'],
-//                  price: document.data['price']
-//              )
-//          )
-//          );
-//        }
+        trailing: Text(Qty +" * "+Price,
+          style: TextStyle(
+              fontSize: 10,
+              color: Colors.grey
+          ),
+        )
     );
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return choice();
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: Color(0xff25242A),
+              child: Padding(
+                padding: EdgeInsets.only(top: 29, bottom: 10),
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                        icon: Icon(Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          dispose();
+                          Navigator.pop(context);
+                        }),
+                    SizedBox(width: 20),
+                    Flexible(
+                      child: TextField(
+                        autofocus: false,
+                        cursorColor: Colors.white,
+                        controller: search,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                        ),
+                        decoration: InputDecoration(
+                            hintText: "  Search here!",
+                            hintStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 01, vertical: 10),
+                            suffixIcon: Material(
+                              elevation: 4.0,
+                              color: Color(0xfff7f7f7),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20.0),),
+                              child: IconButton(
+                                  icon: new Icon(Icons.search),
+                                  color: Colors.black,
+                                  onPressed: () {
+                                    setState(() {
+                                      Navigator.pop(context);
+//                                      Navigator.push(context, MaterialPageRoute(
+//                                          builder: (context) =>
+////                                              Results(
+////                                                string: search.text.toString(),)
+//                                      ));
+//                                            widget.string = search.text.toString();
+//                                            print("======rer======");
+                                    });
+                                  }
+                              ),
+                            ),
+                            border: InputBorder.none
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 40),
+                  ],
+                ),
+              ),
+            ),
+            _Stream()
+          ],
+        ),
+      ),
+    );
   }
-
 }
